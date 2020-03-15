@@ -47,17 +47,17 @@ void init()
 	}
 	fin.close();
 	PAUSE
-	CLEAR
+		CLEAR
 }
 
 void addnewregistration()
 {
 	registration newregistration;
-	cout <<"enter name for new registration ->";
+	cout << "enter name for new registration ->";
 	cin.ignore();
 	getline(cin, newregistration.FullName);
-	cout <<"enter mail for new registration->";
-	getline(cin,newregistration.mail);
+	cout << "enter mail for new registration->";
+	getline(cin, newregistration.mail);
 	fstream fin;
 	fin.open(filename);
 	if (!fin)
@@ -72,13 +72,13 @@ void addnewregistration()
 			fin >> data3;
 			if (newregistration.mail == data3)
 			{
-				cout << "Such email already exists, try entering another email"<<endl;
+				cout << "Such email already exists, try entering another email" << endl;
 				return;
 			}
 		}
 	}
 	fin.close();
-	cout <<"Enter Password for new registration->";
+	cout << "Enter Password for new registration->";
 	getline(cin, newregistration.Password);
 	registrations.push_back(newregistration);
 	ofstream fout;
@@ -90,15 +90,15 @@ void addnewregistration()
 	}
 	else
 	{
-		fout << newregistration.FullName<< " ";
-		fout << newregistration.mail<<" ";
-		fout << newregistration.Password<< endl;
+		fout << newregistration.FullName << " ";
+		fout << newregistration.mail << " ";
+		fout << newregistration.Password << endl;
 	}
-	
+
 	fout.close();
 	cout << "A new contact has been created\n";
 	PAUSE
-	CLEAR
+		CLEAR
 }
 void Logging_in()
 {
@@ -107,11 +107,11 @@ void Logging_in()
 	string Password1;
 	cout << "enter name->";
 	cin.ignore();
-	getline(cin,name);
+	getline(cin, name);
 	cout << "enter mail->";
-	getline(cin,mail1);
+	getline(cin, mail1);
 	cout << "enter Password->";
-	getline(cin,Password1);
+	getline(cin, Password1);
 	ifstream fin;
 	fin.open(filename);
 	bool isOpen = fin.is_open();
@@ -122,28 +122,29 @@ void Logging_in()
 	else
 	{
 		string data;
-		
+
 		while (!fin.eof())
 		{
 			data = "";
-			
-			getline(fin,data);
-			
-			if (data == name+" "+mail1+" "+Password1)
+
+			getline(fin, data);
+
+			if (data == name + " " + mail1 + " " + Password1)
 			{
 				cout << "hello :" << name << endl;
+				fin.close();
+				return;
 			}
-			else{
-				cout << "Data entered incorrectly" << endl;
-			}
+
 		}
+		cout << "Data entered incorrectly" << endl;
 	}
 	fin.close();
 	PAUSE
-    CLEAR
+	CLEAR
 }
 
 
-	
-	
-	
+
+
+
